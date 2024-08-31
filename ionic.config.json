@@ -1,0 +1,7 @@
+{
+  "name": "cmx",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

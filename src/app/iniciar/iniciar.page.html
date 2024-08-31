@@ -1,0 +1,50 @@
+<ion-content [fullscreen]="true" class="ion-padding">
+  <br /> <br /> <br /> <br /> <br />
+  <img
+    alt="logo apliacion"
+    src="/assets/logoAPP.jpg"
+  ><img>
+  <h4 class="titulo" >Iniciar sesion</h4>
+  <form #formulario="ngForm" (ngSubmit)="onSubmit()">
+    <ion-item>
+      <ion-icon name="mail-outline" color="sky"></ion-icon>
+      <ion-label>Correo</ion-label>
+      <ion-input label="Correo"
+                 placeholder="Correo"
+                 label-placement="floating"
+                 fill="outline"
+                 name="Correo"
+                 [(ngModel)]="usuario.correo"
+                 [clearInput]="true"
+                 required
+                 ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="lock-closed-outline" color="sky" ></ion-icon>
+      <ion-label>Contraseña</ion-label>
+      <ion-input label="Contraseña"
+                 type="password"
+                 value="password"
+                 placeholder="Clave de seguridad"
+                 label-placement="floating"
+                 fill="outline"
+                 name="password"
+                 [(ngModel)]="usuario.password"
+                 [clearInput]="true"
+                 [counter]="true"
+                 maxlength="20"
+                 [counterFormatter]="customCounterFormatter"
+                 required
+                 ></ion-input>
+    </ion-item>
+    <br />
+    <div class="ion-text-center">
+      <ion-button color="sky" [disabled]="formulario.invalid" size="small" routerLink="/tabs/principal"
+    type="submit" fill="outline">Iniciar sesion</ion-button>
+    </div>
+  </form>
+</ion-content>
+
+
+

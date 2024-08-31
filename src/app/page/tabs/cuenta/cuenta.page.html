@@ -1,0 +1,117 @@
+<ion-toolbar>
+  <ion-title color="tertiary">Cuenta</ion-title>
+</ion-toolbar>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{usuarioCuenta.nombre}}</ion-card-title>
+      <ion-card-subtitle color="medium">Configuración cuenta</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-thumbnail slot="start">
+            <img alt="Silhouette of mountains" src="{{usuarioCuenta.imgURL}}" />
+          </ion-thumbnail>
+          <ion-label>{{usuarioCuenta.email}}</ion-label>
+        </ion-item>
+      </ion-list>
+      <br />
+      <ion-button size="small" fill="outline" expand="block" color="tertiary" id="open-modal3">
+        <ion-icon name="color-wand-outline" color="tertiary"></ion-icon>
+        <ion-modal #modal trigger="open-modal3" [initialBreakpoint]="0.95">
+          <ng-template>
+            <ion-header>
+              <ion-toolbar color="tertiary">
+                <ion-buttons slot="start">
+                  <ion-button color="light" (click)="cancel()">Cancelar</ion-button>
+                </ion-buttons>
+                <ion-title color="light">Datos personales</ion-title>
+                <ion-buttons slot="end">
+                  <ion-button color="light" (click)="confirm()" [strong]="true"  type="submit">Confirmar</ion-button>
+                </ion-buttons>
+              </ion-toolbar>
+            </ion-header>
+            <ion-content class="ion-padding">
+              <ion-item>
+                <ion-input label="Nombre"
+                           labelPlacement="floating"
+                           fill="outline"
+                           type="text"
+                           placeholder="Inserta tu nombre"
+                           [(ngModel)]="usuarioCuenta.nombre"
+                           [clearInput]="true"
+                ></ion-input>
+              </ion-item>
+
+              <ion-item>
+                <ion-input label="Email"
+                           labelPlacement="floating"
+                           fill="outline"
+                           type="text"
+                           placeholder="Inserta tu email"
+                           [(ngModel)]="usuarioCuenta.email"
+                           [clearInput]="true"
+                ></ion-input>
+              </ion-item>
+            </ion-content>
+
+          </ng-template>
+        </ion-modal>
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-list [inset]="true">
+    <ion-item>
+      <ion-icon slot="start" name="globe-outline" size="small" color="tertiary"></ion-icon>
+      <ion-select label="Idioma" placeholder="Opciones" interface="popover">
+        <ion-select-option value="español">Español</ion-select-option>
+        <ion-select-option value="ingles">Ingles</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-icon slot="start" name="notifications-circle-outline" size="small" color="tertiary"></ion-icon>
+      <ion-toggle [enableOnOffLabels]="true" color="tertiary">Activar notificaciones</ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-icon slot="start" name="moon-outline" size="small" color="tertiary"></ion-icon>
+      <ion-toggle [enableOnOffLabels]="true" color="tertiary">Modo oscuro</ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-icon slot="start" name="eye-outline" size="small" color="tertiary"></ion-icon>
+      <ion-range labelPlacement="start" label="Tamaño letra" aria-label="Range with ticks" [ticks]="true" 
+                 [snaps]="true" [min]="0" [max]="3"></ion-range>
+    </ion-item>
+    <ion-item routerLink="/home">
+      <ion-icon slot="start" name="person-remove-outline" size="small" color="tertiary"></ion-icon>
+      <ion-label>Cerrar sesión</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-icon slot="start" name="heart-outline" size="small" color="tertiary"></ion-icon>
+      <ion-select label="Calificar aplicación" placeholder="Opciones" interface="popover">
+        <ion-select-option value="1">★</ion-select-option>
+        <ion-select-option value="2">★★</ion-select-option>
+        <ion-select-option value="3">★★★</ion-select-option>
+        <ion-select-option value="4">★★★★</ion-select-option>
+        <ion-select-option value="5">★★★★★</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+
+<!-- <ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-avatar slot="start">
+        <img src="{{usuarioCuenta.imgURL}}"/>
+      </ion-avatar>
+      <ion-label>
+        <h3>{{usuarioCuenta.nombre}}</h3>
+        <p>{{usuarioCuenta.email}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content> -->

@@ -1,0 +1,43 @@
+<ion-toolbar>
+  <ion-title color="tertiary">Busqueda</ion-title>
+</ion-toolbar>
+<ion-toolbar>
+  <ion-searchbar></ion-searchbar>
+</ion-toolbar>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-item-group>
+    <ion-item-divider color="light">
+      <ion-label color="tertiary">Sugerencias</ion-label>
+    </ion-item-divider>
+  
+    <ion-item>
+      <ion-label>Eventos</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Reunión</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Riesgo</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Ayuda</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Parque</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Basura</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Invitación</ion-label>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label>Peligro</ion-label>
+    </ion-item>
+  </ion-item-group>
+  
+</ion-content>

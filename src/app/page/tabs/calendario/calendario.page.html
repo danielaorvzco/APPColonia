@@ -1,0 +1,39 @@
+<ion-toolbar>
+  <ion-title color="tertiary">Calendario</ion-title>
+</ion-toolbar>
+
+<ion-content>
+  <ion-datetime  #datetime min="2020-01-01T00:00:00" max="2025-12-31T23:59:59" [highlightedDates]="highlightedDates"
+                 [showDefaultButtons]="true" color="tertiary" doneText="Agregar evento" cancelText="Cancelar">
+  <ion-buttons slot="buttons">
+    <ion-button color="primary" (click)="datetimeConfirm()" slot="end" id="open-modal4">Agregar evento</ion-button>
+    <ion-modal #modal trigger="open-modal4" [initialBreakpoint]="0.5" [breakpoints]="[0, 0.25, 0.5]">
+      <ng-template>
+        <ion-header>
+          <ion-toolbar color="tertiary">
+            <ion-buttons slot="start">
+              <ion-button color="light" (click)="cancel()">Cancelar</ion-button>
+            </ion-buttons>
+            <ion-title color="light">Apartar fecha</ion-title>
+            <ion-buttons slot="end">
+              <ion-button color="light" (click)="confirm()" [strong]="true"  type="submit">Confirmar</ion-button>
+            </ion-buttons>
+          </ion-toolbar>
+        </ion-header>
+        <ion-content class="ion-padding">
+          <ion-item>
+            <ion-input label="Dia"
+                       labelPlacement="floating"
+                       fill="outline"
+                       type="text"
+                       placeholder="Inserta en este formato aaaa-mm-dd"
+                       [(ngModel)]="date"
+                       [clearInput]="true"
+            ></ion-input>
+          </ion-item>
+        </ion-content>
+
+      </ng-template>
+    </ion-modal>
+  </ion-buttons></ion-datetime>
+</ion-content>

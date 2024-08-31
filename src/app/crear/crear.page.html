@@ -1,0 +1,80 @@
+<ion-header [translucent]="true">
+  <ion-content [fullscreen]="true" class="ion-padding">
+    <br /> <br />
+    <img
+      alt="logo aplicacion"
+      src="/assets/logoAPP.jpg"
+    ><img>
+    <h4 class="titulo" >Crear cuenta</h4>
+    <form #formulario="ngForm" (ngSubmit)="onSubmit()">
+      <ion-item>
+        <ion-icon name="person-outline" color="sky"></ion-icon>
+        <ion-label>Nombre</ion-label>
+        <ion-input label="Nombre"
+                   placeholder="Nombre"
+                   label-placement="floating"
+                   fill="outline"
+                   name="Nombre"
+                   [(ngModel)]="usuario.nombre"
+                   [clearInput]="true"
+                   required
+                   ></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-icon name="mail-outline" color="sky"></ion-icon>
+        <ion-label>Correo</ion-label>
+        <ion-input label="Correo"
+                   placeholder="Correo"
+                   label-placement="floating"
+                   fill="outline"
+                   name="Correo"
+                   [(ngModel)]="usuario.correo"
+                   [clearInput]="true"
+                   required
+                   ></ion-input>
+      </ion-item>
+      
+      <ion-item>
+        <ion-icon name="call-outline" color="sky"></ion-icon>
+        <ion-label>Numero celular</ion-label>
+        <ion-input label="Numero celular"
+                   type="tel"
+                   placeholder="Telefono"
+                   label-placement="floating"
+                   fill="outline"
+                   name="telephone"
+                   [(ngModel)]="usuario.numero"
+                   [clearInput]="true"
+                   required
+                   ></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-icon name="lock-closed-outline" color="sky" ></ion-icon>
+        <ion-label>Contraseña</ion-label>
+        <ion-input label="Contraseña"
+                   type="password"
+                   value="password"
+                   placeholder="Clave de seguridad"
+                   label-placement="floating"
+                   fill="outline"
+                   name="password"
+                   [(ngModel)]="usuario.password"
+                   [clearInput]="true"
+                   [counter]="true"
+                   maxlength="20"
+                   [counterFormatter]="customCounterFormatter"
+                   required
+                   ></ion-input>
+      </ion-item>
+      <br />
+      <ion-checkbox labelPlacement="end" color="sky" required>Acepto los términos y condiciones</ion-checkbox>
+      <br />
+      <br />
+      <div class="ion-text-center">
+        <ion-button color="sky" [disabled]="formulario.invalid" size="small" 
+                    type="submit" fill="outline" routerLink="/tabs/principal">Crear cuenta</ion-button>
+      </div>
+    </form>
+  </ion-content>

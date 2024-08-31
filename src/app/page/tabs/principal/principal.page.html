@@ -1,0 +1,151 @@
+<ion-toolbar>
+  <ion-buttons slot="primary">
+    <ion-button routerLink="/tabs/cuenta">
+      <ion-icon slot="icon-only" color="tertiary" name="person-circle"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+  <ion-title color="tertiary">Neighby</ion-title>
+</ion-toolbar>
+
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-fab color="tertiary" slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button size="small">
+      <ion-icon name="chatbox-outline" size="small"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button id="open-modal">
+        <ion-icon name="chatbox-ellipses-outline"></ion-icon>
+        <ion-modal trigger="open-modal" [initialBreakpoint]="0.95">
+          <ng-template>
+            <ion-header>
+              <ion-toolbar color="tertiary">
+                <ion-buttons slot="start">
+                  <ion-button color="light" (click)="cancel()">Cancelar</ion-button>
+                </ion-buttons>
+                <ion-title color="light">Publicación</ion-title>
+                <ion-buttons slot="end">
+                  <ion-button color="light" (click)="confirm()" [strong]="true"  type="submit">Confirmar</ion-button>
+                </ion-buttons>
+              </ion-toolbar>
+            </ion-header>
+            <ion-content class="ion-padding">
+              <ion-item>
+                <ion-input label="Asunto"
+                           labelPlacement="floating"
+                           fill="outline"
+                           type="text"
+                           placeholder="Inserta el asunto de esta publicación"
+                           [(ngModel)]="post.asunto"
+                           [clearInput]="true"
+                ></ion-input>
+              </ion-item>
+
+              <ion-item>
+                <ion-input label="Dia"
+                           labelPlacement="floating"
+                           fill="outline"
+                           type="tel"
+                           placeholder="Inserta el dia (dd/mm/aaaa)"
+                           [(ngModel)]="post.dia"
+                           [clearInput]="true"
+                ></ion-input>
+              </ion-item>
+
+              <ion-item>
+                <ion-textarea label="Mensaje"
+                           labelPlacement="floating"
+                           fill="outline"
+                           type="textarea"
+                           placeholder="Inserta el contenido de tu publicación"
+                           [(ngModel)]="post.mensaje"
+                           rows="5"
+                ></ion-textarea>
+              </ion-item>
+            </ion-content>
+          </ng-template>
+        </ion-modal>
+      </ion-fab-button>
+
+      <ion-fab-button id="open-modal2">
+        <ion-icon name="calendar-number-outline"></ion-icon>
+        <ion-modal trigger="open-modal2" [initialBreakpoint]="0.95">
+          <ng-template>
+            <ion-header>
+              <ion-toolbar color="grass">
+                <ion-buttons slot="start">
+                  <ion-button color="light" (click)="cancela()">Cancelar</ion-button>
+                </ion-buttons>
+                <ion-title color="light">Eventos</ion-title>
+                <ion-buttons slot="end">
+                  <ion-button color="light" (click)="confirma()" [strong]="true"  type="submit">Confirmar</ion-button>
+                </ion-buttons>
+              </ion-toolbar>
+            </ion-header>
+            <ion-content class="ion-padding">
+              <ion-item>
+                <ion-input label="Tipo"
+                           labelPlacement="floating"
+                           fill="outline"
+                           type="text"
+                           placeholder="Inserta el tipo de evento a crear"
+                           [(ngModel)]="evento.tipo"
+                           [clearInput]="true"
+                ></ion-input>
+              </ion-item>
+
+              <ion-item>
+                <ion-input label="Dia"
+                           labelPlacement="floating"
+                           fill="outline"
+                           type="tel"
+                           placeholder="Inserta el dia (dd/mm/aaaa)"
+                           [(ngModel)]="evento.diaE"
+                           [clearInput]="true"
+                ></ion-input>
+              </ion-item>
+
+              <ion-item>
+                <ion-textarea label="Descripción"
+                           labelPlacement="floating"
+                           fill="outline"
+                           type="textarea"
+                           placeholder="Describe tu evento para todos"
+                           [(ngModel)]="evento.descripcion"
+                           rows="5"
+                ></ion-textarea>
+              </ion-item>
+            </ion-content>
+          </ng-template>
+        </ion-modal>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title class="asuntoC">{{post.asunto}}</ion-card-title>
+      <ion-card-subtitle>
+        <ion-badge color="tertiary" class="badge-post">P</ion-badge>
+                           {{post.dia}}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      {{post.mensaje}}
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title class="eventoC">{{evento.tipo}}</ion-card-title>
+      <ion-card-subtitle>
+        <ion-badge color="success" class="badge-evento">E</ion-badge>
+                           {{evento.diaE}}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      {{evento.descripcion}}
+    </ion-card-content>
+  </ion-card>
+</ion-content>
